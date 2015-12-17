@@ -23,9 +23,13 @@ angular.module('Im17yo', ['ionic'])
   });
 })
 .controller('Im17yoCtrl', ['$scope', function($scope){
+  $scope.mydate = new Date("1979-10-05");
   $scope.seventeen = 1;
 
   $scope.onchange = function(){
-    $scope.seventeen++;
+    var d   = $scope.mydate;
+    var now = new Date();
+        
+    $scope.seventeen = (now.getTime() - d.getTime()) / (1000 * 60 * 60 * 24) / 365;
   }
 }]);
