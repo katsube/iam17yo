@@ -24,12 +24,19 @@ angular.module('Im17yo', ['ionic'])
 })
 .controller('Im17yoCtrl', ['$scope', function($scope){
   $scope.mydate = new Date("1979-10-05");
-  $scope.seventeen = 1;
+  $scope.seventeen = "日付を入力してください";
 
   $scope.onchange = function(){
     var d   = $scope.mydate;
+    var d17 = new Date(
+    				  d.getFullYear() + 17
+    				, d.getMonth()
+    				, d.getDate()
+    			);
     var now = new Date();
-        
-    $scope.seventeen = (now.getTime() - d.getTime()) / (1000 * 60 * 60 * 24) / 365;
+	
+	console.log(d, d17, now);
+	
+    $scope.seventeen = "17歳 (" + Math.floor((now.getTime() - d17.getTime()) / (1000 * 60 * 60)) + "日経過)";
   }
 }]);
