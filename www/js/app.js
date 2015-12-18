@@ -27,16 +27,20 @@ angular.module('Im17yo', ['ionic'])
   $scope.seventeen = "日付を入力してください";
 
   $scope.onchange = function(){
+    var now = new Date();
     var d   = $scope.iam.mydate;
     var d17 = new Date(
     				  d.getFullYear() + 17
     				, d.getMonth()
     				, d.getDate()
     			);
-    var now = new Date();
 	
-	console.log(d, d17, now);
-	
-    $scope.seventeen = "17歳 (" + Math.floor((now.getTime() - d17.getTime()) / (1000 * 60 * 60)) + "日経過)";
-  }
+	var diff = Math.floor((now.getTime() - d17.getTime()) / (1000 * 60 * 60));
+
+    if( 0 < diff )
+      $scope.seventeen = "17歳 (" + diff + "日経過)";
+    else
+      $scope.seventeen = "17歳じゃないです";
+  };
+
 }]);
