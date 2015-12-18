@@ -23,11 +23,11 @@ angular.module('Im17yo', ['ionic'])
   });
 })
 .controller('Im17yoCtrl', ['$scope', function($scope){
-  $scope.mydate = new Date("1979-10-05");
+  $scope.iam = {mydate: new Date("1979-10-05")};
   $scope.seventeen = "日付を入力してください";
 
   $scope.onchange = function(){
-    var d   = $scope.mydate;
+    var d   = $scope.iam.mydate;
     var d17 = new Date(
     				  d.getFullYear() + 17
     				, d.getMonth()
